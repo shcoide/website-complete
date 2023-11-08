@@ -1,0 +1,9 @@
+.main{
+    display: flex;
+    flex-direction: column;
+
+  }
+  .area{
+    margin-top: 60px;
+    height: auto;
+  }
