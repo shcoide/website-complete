@@ -1,15 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-
-/* body{
-    font-family: 'Playfair Display', serif;
-    display: grid;
-    background-color: #4158D0;
-background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-
-    align-content: center;
-    min-height: 100vh;
-} */
 .sec{
     display: grid;
     grid-template-columns: 1fr 1fr;

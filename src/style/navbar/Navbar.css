@@ -14,12 +14,6 @@ h1{
   color: transparent;
 }
 
-[type="checkbox"]:checked,
-[type="checkbox"]:not(:checked){
-  position: absolute;
-  left: -9999px;
-}
-
 .nav-initial{
     position: fixed;
     top: 0px;
@@ -92,10 +86,9 @@ h1{
 
 .menu-icon:checked + label,
 .menu-icon:not(:checked) + label {
-  position: fixed; 
-  top: 50px;
+  position: fixed;
+  top: 63px;
   right: 75px;
-  display: block;
   width: 20px;
   height: 20px;
   padding: 0;
@@ -198,6 +191,7 @@ h1{
 
 .menu-icon:checked ~ .nav {
   animation-play-state: paused;
+  display: block;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
@@ -326,10 +320,15 @@ h1{
 
 
 @media screen and (max-width: 800px) {
+  [type="checkbox"]:checked,
+  [type="checkbox"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+  }
   .menu-icon:checked + label,
-  .menu-icon:not(:checked) + label{
-    right: 55px;
+  .menu-icon:not(:checked) + label {
     display: block;
+    right: 55px;
   }
   .logo {
     left: 30px;
@@ -346,7 +345,7 @@ h1{
     color: #ffeba7;
   }
   .nav ul li a{
-    font-size: 7vh;
+    font-size: 6vh;
   }
   .nav{
     display: block;
