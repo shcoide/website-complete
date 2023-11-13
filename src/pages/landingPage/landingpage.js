@@ -2,74 +2,126 @@ import React, { useEffect, useRef } from "react";
 import {Swiper} from "swiper";
 import 'swiper/swiper-bundle.css';
 
- 
 
 import "./landingpage.css";
 const Landing = () => {
     const sliderRef = useRef(null);
     const thumbsRef = useRef(null);
   
-    useEffect(() => {
-      // Initialize Swiper instances
-      sliderRef.current = new Swiper(".gallery-slider", {
-        slidesPerView: 1,
-        loop: true,
-        loopedSlides: 6,
-        noSwiping: true,
-        keyboard: {
-          enabled: true,
-        },
-        mousewheel: {
-          thresholdDelta: 70,
-        },
-        noSwipingClass: "swiper-slide",
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-      });
+  //   useEffect(() => {
+  //     // Initialize Swiper instances
+  //     sliderRef.current = new Swiper(".gallery-slider", {
+  //       slidesPerView: 1,
+  //       loop: true,
+  //       loopedSlides: 6,
+  //       noSwiping: true,
+  //       keyboard: {
+  //         enabled: true,
+  //       },
+  //       mousewheel: {
+  //         thresholdDelta: 70,
+  //       },
+  //       noSwipingClass: "swiper-slide",
+  //       pagination: {
+  //         el: ".swiper-pagination",
+  //         clickable: true,
+  //       },
+  //     });
   
-      thumbsRef.current = new Swiper(".gallery-thumbs", {
-        slidesPerView: "auto",
-        spaceBetween: 10,
-        centeredSlides: false,
-        loop: true,
-        slideToClickedSlide: true,
-      });
+  //     thumbsRef.current = new Swiper(".gallery-thumbs", {
+  //       slidesPerView: "auto",
+  //       spaceBetween: 10,
+  //       centeredSlides: false,
+  //       loop: true,
+  //       slideToClickedSlide: true,
+  //     });
+  //   // Handle click event on the slides using a custom click handler
+  //   const handleSlideClick = (event) => {
+  //       // Get the clicked slide
+  //       const clickedSlide = event.target.closest(".swiper-slide");
+  //       console.log(clickedSlide,"redy")
+  
+  //       if (clickedSlide) {
+  //         // Manually trigger the slide change
+  //         const slideIndex = clickedSlide.getAttribute("data-swiper-slide-index");
+  //         console.log(slideIndex,"gadkgu");
+  //         if (slideIndex) {
+  //           sliderRef.current.slideTo(parseInt(slideIndex));
+  //         }
+  //       }
+  //     };
+  
+  //     // Add the click handler to all slides
+  //     sliderRef.current.slides.forEach((slide) => {
+  //       slide.addEventListener("click", handleSlideClick);
+  //     });
+  
+  //     // Return cleanup function
+  //     return () => {
+  //       // Remove the click handler from all slides
+  //       sliderRef.current.slides.forEach((slide) => {
+  //         slide.removeEventListener("click", handleSlideClick);
+  //       });
+  
+  //       // Destroy Swiper instance when component unmounts
+  //       if (sliderRef.current) {
+  //         sliderRef.current.destroy();
+  //         sliderRef.current = null; // Clear the reference
+  //       }
+  //     };
+  // }, []);
+  useEffect(() => {
+    // Initialize Swiper instances
+    const slider = new Swiper(".gallery-slider", {
+      slidesPerView: 1,
+      loop: true,
+      loopedSlides: 6,
+      noSwiping: true,
+      keyboard: {
+        enabled: true,
+      },
+      mousewheel: {
+        thresholdDelta: 70,
+      },
+      noSwipingClass: "swiper-slide",
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  
+    const thumbs = new Swiper(".gallery-thumbs", {
+      slidesPerView: "auto",
+      spaceBetween: 10,
+      centeredSlides: false,
+      loop: true,
+      slideToClickedSlide: true,
+    });
+  
     // Handle click event on the slides using a custom click handler
     const handleSlideClick = (event) => {
-        // Get the clicked slide
-        const clickedSlide = event.target.closest(".swiper-slide");
-        console.log(clickedSlide,"redy")
-  
-        if (clickedSlide) {
+      const clickedSlide = event.target.closest(".swiper-slide");
+      if (clickedSlide) {
+        const slideIndex = parseInt(clickedSlide.getAttribute("data-swiper-slide-index"), 10);
+        if (!isNaN(slideIndex)) {
           // Manually trigger the slide change
-          const slideIndex = clickedSlide.getAttribute("data-swiper-slide-index");
-          console.log(slideIndex,"gadkgu");
-          if (slideIndex) {
-            sliderRef.current.slideTo(parseInt(slideIndex));
-          }
+          slider.slideTo(slideIndex);
         }
-      };
+      }
+    };
   
-      // Add the click handler to all slides
-      sliderRef.current.slides.forEach((slide) => {
-        slide.addEventListener("click", handleSlideClick);
-      });
+    // Add the click handler to the thumbs container
+    thumbs.el.addEventListener("click", handleSlideClick);
   
-      // Return cleanup function
-      return () => {
-        // Remove the click handler from all slides
-        sliderRef.current.slides.forEach((slide) => {
-          slide.removeEventListener("click", handleSlideClick);
-        });
+    // Return cleanup function
+    return () => {
+      // Remove the click handler from the thumbs container
+      thumbs.el.removeEventListener("click", handleSlideClick);
   
-        // Destroy Swiper instance when component unmounts
-        if (sliderRef.current) {
-          sliderRef.current.destroy();
-          sliderRef.current = null; // Clear the reference
-        }
-      };
+      // Destroy Swiper instances when the component unmounts
+      slider.destroy();
+      thumbs.destroy();
+    };
   }, []);
 
   return (
