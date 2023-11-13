@@ -13,7 +13,23 @@ h1{
   /* text-fill-color: transparent; */
   color: transparent;
 }
-
+.landing-img{
+  background: url('../../img/landing.jpg');
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  /* font-weight: bold; */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 600;
+  /* background-image: linear-gradient(to left, #553c9a, #b393d3); */
+  color: transparent;
+  /* background-clip: text; */
+  /* -webkit-background-clip: text; */
+}
 .nav-initial{
     position: fixed;
     top: 0px;
@@ -26,8 +42,8 @@ h1{
     margin: 0;
     overflow: hidden;
     z-index: 20;
-    box-shadow: 0 8px 30px 0 rgba(0,0,0,0.3);
-    background-color: #353746;
+    /* box-shadow: 0 8px 30px 0 rgba(0,0,0,0.3); */
+
     
 }
 .company-logo{
@@ -83,7 +99,9 @@ h1{
   width: 100%;
 }
 
-
+.menu-icon{
+  display: none;
+}
 .menu-icon:checked + label,
 .menu-icon:not(:checked) + label {
   position: fixed;
@@ -324,6 +342,9 @@ h1{
   [type="checkbox"]:not(:checked) {
     position: absolute;
     left: -9999px;
+  }
+  .menu-icon{
+    display: block;
   }
   .menu-icon:checked + label,
   .menu-icon:not(:checked) + label {

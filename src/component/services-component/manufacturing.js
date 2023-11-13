@@ -11,7 +11,7 @@ function Manufacturing() {
         <div className='area'>
           <Manufacturingbody/>
         </div>
-        <div className=''>
+        <div className='foot'>
         <Footer />
         </div>
         

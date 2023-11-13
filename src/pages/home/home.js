@@ -1,9 +1,9 @@
 import React from 'react';
 import Footer from '../../component/footer/Footer.js';
 import '../../style/fixed.css'
-import Aboutinfo from '../about/about-info.js';
 import ContactForm from '../../component/contact/contactform.js';
 import Servicebody from '../services/services-body.jsx';
+import Homeinfo from '../../component/home/home-about.js';
 
 
 function Home() {
@@ -11,7 +11,7 @@ function Home() {
     <>
       <div className='main'>
         <div className='area'>
-          <Aboutinfo/>
+          <Homeinfo/>
           <Servicebody/>
           <ContactForm/>
         </div>
