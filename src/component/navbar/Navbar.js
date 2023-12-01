@@ -43,8 +43,9 @@ function Navbar() {
         </nav>
         <nav className='nav-initial'
         style={{
-          backgroundColor: isNavbarVisible ? '#353746' : 'transparent',
+          backgroundColor: isNavbarVisible ? 'rgba(46 ,46, 56,1)' : 'transparent',
           boxShadow: isNavbarVisible ? ' 0 8px 30px 0 rgba(0,0,0,0.3)' : '0 8px 30px 0 rgba(0,0,0,0)',
+          // backdropFilter: isNavbarVisible ? 'blur(40px)': 'none',
         }}>
           <ul className='company-logo'></ul>
           <ul className="pt-5-initial">
