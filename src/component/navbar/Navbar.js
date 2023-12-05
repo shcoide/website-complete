@@ -5,7 +5,13 @@ import { Outlet, Link } from "react-router-dom";
 
 function Navbar() {
   const [isNavbarVisible, setNavbarVisible] = useState(false);
-
+  const closeCheckbox = () => {
+    // Uncheck the checkbox by changing its state
+    const checkbox = document.getElementById('menu-icon');
+    if (checkbox) {
+      checkbox.checked = false;
+    }
+  };
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -35,10 +41,10 @@ function Navbar() {
         </div>
         <nav className="nav"> 
           <ul className="pt-5">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/services">Services</Link></li>
-            <li><Link to="/about">About us</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/" onClick={closeCheckbox}>Home</Link></li>
+            <li><Link to="/services" onClick={closeCheckbox}>Services</Link></li>
+            <li><Link to="/about" onClick={closeCheckbox}>About us</Link></li>
+            <li><Link to="/contact" onClick={closeCheckbox}>Contact</Link></li>
           </ul>
         </nav>
         <nav className='nav-initial'
